@@ -12,55 +12,49 @@ export default function WishlistForm() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!isValidEmail(email)) {
-      setStatus("error");
-      return;
-    }
+    if (!isValidEmail(email)) return setStatus("error");
     setStatus("success");
     setEmail("");
   }
 
   return (
-    <div className="mx-auto w-full rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
-      <div className="text-center">
-        <h2 className="text-2xl font-bold">Join the wishlist</h2>
-        <p className="mt-2 text-[var(--wp-muted)]">
-          Early access, private beta, and first-mover perks.
-        </p>
-      </div>
-
-      <form onSubmit={submit} className="mt-7 flex flex-col gap-3 sm:flex-row">
+    <div id="waitlist" className="mt-7 w-full max-w-xl">
+      <form
+        onSubmit={submit}
+        className="flex w-full items-center gap-2 rounded-2xl border border-white/10 bg-white/5 p-2 backdrop-blur"
+      >
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           placeholder="you@example.com"
-          className="w-full flex-1 rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+          className="w-full flex-1 bg-transparent px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none"
         />
         <button
           type="submit"
-          className="rounded-2xl px-5 py-3 text-sm font-semibold text-black"
+          className="shrink-0 rounded-xl px-4 py-2 text-sm font-semibold text-black"
           style={{
             background: "linear-gradient(90deg, var(--wp-sand), var(--wp-sun))",
           }}
         >
-          Notify me
+          Get invite
         </button>
       </form>
 
       {status === "success" && (
-        <p className="mt-4 text-center text-sm text-white/85">
+        <p className="mt-3 text-sm text-white/80">
           You’re on the list. We’ll email you when the beta opens.
         </p>
       )}
+
       {status === "error" && (
-        <p className="mt-4 text-center text-sm text-red-300">
+        <p className="mt-3 text-sm text-red-300">
           Please enter a valid email address.
         </p>
       )}
 
-      <p className="mt-5 text-center text-xs text-[var(--wp-muted)]">
-        No spam. Unsubscribe anytime.
+      <p className="mt-3 text-xs text-white/50">
+        No spam. One email when the beta opens.
       </p>
     </div>
   );
