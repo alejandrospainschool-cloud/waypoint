@@ -12,7 +12,10 @@ export default function WishlistForm() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!isValidEmail(email)) return setStatus("error");
+    if (!isValidEmail(email)) {
+      setStatus("error");
+      return;
+    }
     setStatus("success");
     setEmail("");
   }
@@ -30,10 +33,12 @@ export default function WishlistForm() {
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          type="email"
           placeholder="you@example.com"
           className="w-full flex-1 rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
         />
         <button
+          type="submit"
           className="rounded-2xl px-5 py-3 text-sm font-semibold text-black"
           style={{
             background: "linear-gradient(90deg, var(--wp-sand), var(--wp-sun))",
@@ -59,4 +64,4 @@ export default function WishlistForm() {
       </p>
     </div>
   );
-}}
+}
