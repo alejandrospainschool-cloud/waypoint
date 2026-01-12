@@ -4,9 +4,6 @@
 
 :root {
   --wp-bg: #0b0f19;
-  --wp-card: rgba(255, 255, 255, 0.06);
-  --wp-border: rgba(255, 255, 255, 0.10);
-
   --wp-text: rgba(255, 255, 255, 0.92);
   --wp-muted: rgba(255, 255, 255, 0.68);
 
@@ -24,13 +21,11 @@ body {
 body {
   background: var(--wp-bg);
   color: var(--wp-text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
 }
 
-/* Subtle grid texture */
-.wp-grid {
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
-  background-size: 28px 28px;
+/* Prevent “blue link” defaults */
+a {
+  color: inherit;
+  text-decoration: none;
 }
