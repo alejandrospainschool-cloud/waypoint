@@ -2,44 +2,61 @@
 
 import { useState } from "react";
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
 export default function WishlistForm() {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email.includes("@")) return;
-    setSubmitted(true);
+    if (!isValidEmail(email)) return setStatus("error");
+    setStatus("success");
+    setEmail("");
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-      <h2 className="text-xl font-semibold">Join the wishlist</h2>
-      <p className="mt-2 text-white/70">
-        Early access, private beta, and first-mover perks.
-      </p>
-
-      {submitted ? (
-        <p className="mt-6 text-green-400">
-          You’re on the list. We’ll be in touch.
+    <div className="mx-auto w-full rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold">Join the wishlist</h2>
+        <p className="mt-2 text-[var(--wp-muted)]">
+          Early access, private beta, and first-mover perks.
         </p>
-      ) : (
-        <form onSubmit={submit} className="mt-6 flex gap-3">
-          <input
-            type="email"
-            placeholder="you@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/40"
-          />
-          <button
-            type="submit"
-            className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black"
-          >
-            Notify me
-          </button>
-        </form>
+      </div>
+
+      <form onSubmit={submit} className="mt-7 flex flex-col gap-3 sm:flex-row">
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          className="w-full flex-1 rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+        />
+        <button
+          className="rounded-2xl px-5 py-3 text-sm font-semibold text-black"
+          style={{
+            background: "linear-gradient(90deg, var(--wp-sand), var(--wp-sun))",
+          }}
+        >
+          Notify me
+        </button>
+      </form>
+
+      {status === "success" && (
+        <p className="mt-4 text-center text-sm text-white/85">
+          You’re on the list. We’ll email you when the beta opens.
+        </p>
       )}
+      {status === "error" && (
+        <p className="mt-4 text-center text-sm text-red-300">
+          Please enter a valid email address.
+        </p>
+      )}
+
+      <p className="mt-5 text-center text-xs text-[var(--wp-muted)]">
+        No spam. Unsubscribe anytime.
+      </p>
     </div>
   );
-}
+}}

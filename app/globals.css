@@ -1,26 +1,36 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --wp-bg: #0b0f19;
+  --wp-card: rgba(255, 255, 255, 0.06);
+  --wp-border: rgba(255, 255, 255, 0.10);
+
+  --wp-text: rgba(255, 255, 255, 0.92);
+  --wp-muted: rgba(255, 255, 255, 0.68);
+
+  --wp-sand: #f6c453;
+  --wp-sun: #f59e0b;
+  --wp-ocean: #22d3ee;
+  --wp-deep: #0284c7;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--wp-bg);
+  color: var(--wp-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle grid texture */
+.wp-grid {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+  background-size: 28px 28px;
 }
