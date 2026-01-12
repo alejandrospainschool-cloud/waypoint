@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#020617"/>
+  <rect x="100" y="120" width="1200" height="660" rx="24" fill="#020617" stroke="#334155" stroke-width="2"/>
+
+  <rect x="160" y="180" width="420" height="60" rx="12" fill="#1e293b"/>
+  <rect x="160" y="270" width="980" height="50" rx="10" fill="#1e293b"/>
+  <rect x="160" y="350" width="880" height="50" rx="10" fill="#1e293b"/>
+  <rect x="160" y="430" width="920" height="50" rx="10" fill="#1e293b"/>
+  <rect x="160" y="510" width="760" height="50" rx="10" fill="#1e293b"/>
+
+  <text x="700" y="760" text-anchor="middle" font-size="22" fill="#64748b"
+        font-family="system-ui, -apple-system, Segoe UI, Roboto">
+    Projects & notes view
+  </text>
+</svg>
