@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="ocean" x1="0" x2="1">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#0284c7" stop-opacity="0.25"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="transparent"/>
+
+  <!-- soft glow behind the map -->
+  <ellipse cx="1050" cy="360" rx="520" ry="320" fill="url(#ocean)" filter="url(#soft)"/>
+
+  <!-- ultra-simple “map” silhouette (stylized blob shapes) -->
+  <g fill="rgba(255,255,255,0.18)">
+    <path d="M258 330c84-58 186-46 232 6 48 55 18 122-52 156-72 35-158 42-224-6-62-46-54-114 44-156z"/>
+    <path d="M520 260c60-30 138-18 172 24 34 41 10 98-52 126-64 30-138 32-182-6-44-38-26-108 62-144z"/>
+    <path d="M760 320c74-56 190-70 274-38 88 34 128 112 72 176-58 66-178 96-290 78-112-18-166-102-56-216z"/>
+    <path d="M1080 270c96-48 230-40 296 20 68 62 36 150-64 196-102 48-244 50-314-10-72-62-36-156 82-206z"/>
+    <path d="M1180 520c72-28 160-18 196 26 38 46 8 104-70 128-80 26-172 22-206-18-34-40-10-112 80-136z"/>
+  </g>
+
+  <!-- connection arcs -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M1040 360 C 860 280, 700 290, 560 340" stroke="rgba(246,196,83,0.55)" stroke-width="5"/>
+    <path d="M1040 360 C 1160 300, 1300 310, 1400 370" stroke="rgba(34,211,238,0.55)" stroke-width="5"/>
+    <path d="M1040 360 C 980 460, 910 520, 820 560" stroke="rgba(246,196,83,0.45)" stroke-width="5"/>
+    <path d="M1040 360 C 1060 470, 1130 560, 1250 620" stroke="rgba(34,211,238,0.45)" stroke-width="5"/>
+  </g>
+
+  <!-- nodes -->
+  <g>
+    <circle cx="560" cy="340" r="8" fill="#f6c453"/>
+    <circle cx="1040" cy="360" r="10" fill="#22d3ee"/>
+    <circle cx="1400" cy="370" r="8" fill="#f6c453"/>
+    <circle cx="820" cy="560" r="8" fill="#22d3ee"/>
+    <circle cx="1250" cy="620" r="8" fill="#f6c453"/>
+  </g>
+</svg>
